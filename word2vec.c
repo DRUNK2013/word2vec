@@ -17,14 +17,15 @@
 #include <string.h>
 #include <math.h>
 #include <pthread.h>
-
-#define MAX_STRING 100
+//词的长度，默认是100，但汉字和英文字符占位不同，则会出现乱码（UTF-8汉字在2-4位不等）。
+//因此需要预处理词在25字节之内，或者加大MAX_STRING值
+#define MAX_STRING 1000 
 #define EXP_TABLE_SIZE 1000
 #define MAX_EXP 6
 #define MAX_SENTENCE_LENGTH 1000
 #define MAX_CODE_LENGTH 40
 
-const int vocab_hash_size = 30000000;  // Maximum 30 * 0.7 = 21M words in the vocabulary
+const int vocab_hash_size = 600000000;  // Maximum 30 * 0.7 = 21M words in the vocabulary
 
 typedef float real;                    // Precision of float numbers
 
